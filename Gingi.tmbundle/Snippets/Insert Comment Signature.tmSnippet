@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string># `date +%Y-%m-%d` $TM_FULLNAME
+# $0</string>
+	<key>name</key>
+	<string>Insert Comment Signature</string>
+	<key>tabTrigger</key>
+	<string>commsig</string>
+	<key>uuid</key>
+	<string>BD6D3816-CBB6-41E8-9778-D20714F44B52</string>
+</dict>
+</plist>

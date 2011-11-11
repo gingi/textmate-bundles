@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/perl
+
+my $line = &lt;STDIN&gt;;
+my ($param_string) = ($line =~ m/my\s*\(\s*([^\)]+)\)\s*=\s*\@_\s*;/);
+my ($indent) = ($line =~ m/^(\s*)\S/);
+
+my @params = split(/\s*,\s*/, $param_string);
+if (scalar @params == 0) {
+	print $line;
+	exit 0;
+}
+my $max_length = 0;
+for (my $i = 0; $i &lt; scalar @params; $i++) {
+	$params[$i] =~ s/[\$\s+]//g;
+	if (length $params[$i] &gt; $max_length) {
+		$max_length = length $params[$i];
+	}
+}
+$max_length++;
+my $format_string = "${indent}my \%-${max_length}s = %s;\n";
+printf $format_string, '($params)', '@_';
+for my $param (@params) {
+	printf $format_string, "\$$param", "\$params-&gt;{'$param'}";
+}
+</string>
+	<key>fallbackInput</key>
+	<string>line</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>name</key>
+	<string>Convert input parameters into hashref</string>
+	<key>output</key>
+	<string>replaceSelectedText</string>
+	<key>scope</key>
+	<string>source.perl</string>
+	<key>uuid</key>
+	<string>A873AD76-4C01-4E48-A8D1-873BBA88B9E5</string>
+</dict>
+</plist>

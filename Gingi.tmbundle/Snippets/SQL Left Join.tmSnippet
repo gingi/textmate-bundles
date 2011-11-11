@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>left join $1 ${2:using|on} ${2/using|(on)/(?1:$1.$1_id = $3.$3_id:\($1_id\))/}</string>
+	<key>name</key>
+	<string>SQL Left Join</string>
+	<key>scope</key>
+	<string>source.sql</string>
+	<key>tabTrigger</key>
+	<string>lj</string>
+	<key>uuid</key>
+	<string>00DEEE92-46D1-4CBD-992B-AF177633E422</string>
+</dict>
+</plist>

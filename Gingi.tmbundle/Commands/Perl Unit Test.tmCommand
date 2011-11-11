@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/bin/bash
+
+test_case=${TM_FILEPATH/$TM_PROJECT_DIRECTORY}
+test_case=`echo "$test_case" | perl -nle 's|^(/[^A-Z][^/]*)*/||g; s/\.pm$//; s|/|::|g; print'`
+tested_module=${test_case/Test/}
+
+cat &lt;&lt;END_PERL_TEST
+package $test_case;
+
+=head1 NAME
+
+$test_case
+
+=head1 SYNOPSIS
+
+  use $test_case
+
+  
+=head1 DESCRIPTION
+
+Tests $tested_module
+
+=cut
+
+use strict;
+use warnings;
+
+use base qw(Test::Unit::TestCase);
+
+use $tested_module;
+
+=pod
+
+=head2 new
+    Constructor
+
+=cut
+
+sub new {
+    my \\\$self = shift()-&gt;SUPER::new(@_);
+    return \\\$self;
+}
+
+=pod
+
+=head2 test_\$1
+    Tests that \${2:object does something}
+
+=cut
+
+sub test_\$1 {
+    my \\\$self = shift;
+    my \\\$object = $tested_module-&gt;new();
+
+    \\\$self-&gt;assert(1, \\\$object-&gt;\${3:method}(), "\${4:Test failed because...}");
+}
+\$0
+
+1;
+
+=pod
+
+=head1 AUTHOR
+
+Shiran Pasternak E&lt;lt&gt;shiran@cshl.eduE&lt;gt&gt;
+
+=cut
+
+=head1 COPYRIGHT
+
+Copyright (c) `date +%Y` Cold Spring Harbor Laboratory
+
+This library is free software;  you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut
+END_PERL_TEST</string>
+	<key>input</key>
+	<string>selection</string>
+	<key>name</key>
+	<string>Perl Unit Test</string>
+	<key>output</key>
+	<string>insertAsSnippet</string>
+	<key>scope</key>
+	<string>source.perl</string>
+	<key>tabTrigger</key>
+	<string>test</string>
+	<key>uuid</key>
+	<string>FB675F7C-82E7-4631-933D-F7867F59133C</string>
+</dict>
+</plist>

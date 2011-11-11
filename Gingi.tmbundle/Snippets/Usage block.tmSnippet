@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>#############################
+# Usage      : $1
+# Purpose    : $2
+# Returns    : $3
+# Parameters : ${4:none}
+# Throws     : ${5:no exceptions}
+# Comments   : ${6:none}
+# See Also   : ${7:n/a}</string>
+	<key>name</key>
+	<string>Usage block</string>
+	<key>scope</key>
+	<string>source.perl</string>
+	<key>tabTrigger</key>
+	<string>usage</string>
+	<key>uuid</key>
+	<string>D2D4BF1A-CBC5-4367-B031-75F8AD4F3FEE</string>
+</dict>
+</plist>

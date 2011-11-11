@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>saveModifiedFiles</string>
+	<key>command</key>
+	<string>#!/bin/bash
+
+. "$TM_SUPPORT_PATH/lib/bash_init.sh"
+
+if [ -z "$TM_RSYNC_REMOTE_DIRECTORY" ]; then
+	exit_show_tool_tip "Must define remote path in TM_RSYNC_REMOTE_DIRECTORY"
+fi
+
+function ensure_trailing_slash {
+	echo "${1/%\//}/"
+}
+
+local_path=$(ensure_trailing_slash $TM_PROJECT_DIRECTORY)
+remote_path=$(ensure_trailing_slash $TM_RSYNC_REMOTE_DIRECTORY)
+
+require_cmd rsync
+# rsync_opts=''
+
+output=$(rsync -Cavuz --exclude="*.tmproj" "$local_path" "$remote_path" \
+	2&gt; &gt;(CocoaDialog progressbar \
+		--indeterminate \
+		--title "Synchronizing with ${TM_RSYNC_REMOTE_DIRECTORY}" \
+	))
+echo "$output" # | pre
+
+exit 0
+
+rm -f /tmp/hpipe
+mkfifo /tmp/hpipe
+
+CocoaDialog progressbar --indeterminate --title "Synchronizing with ${TM_RSYNC_REMOTE_DIRECTORY}" &lt; /tmp/hpipe &amp;
+
+exec 3&lt;&gt; /tmp/hpipe
+echo -n . &gt;&amp;3
+
+rsync $rsync_opts "$local_path" "$remote_path" &gt;&amp;3
+
+exec 3&gt;&amp;-
+
+wait
+rm -f /tmp/hpipe
+exit 0
+</string>
+	<key>input</key>
+	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>$</string>
+	<key>name</key>
+	<string>Synchronize to Remote Machine</string>
+	<key>output</key>
+	<string>showAsTooltip</string>
+	<key>uuid</key>
+	<string>E8DFEC4F-A3DD-4E53-B0E2-020EB93EE4F2</string>
+</dict>
+</plist>

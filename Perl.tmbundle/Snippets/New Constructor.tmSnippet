@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>=head2 new
+
+	Constructor
+
+=cut
+sub new {
+    my \$class = shift;
+    my (%args)  = @_;
+    my \$self  = {};
+    bless (\$self, \$class);
+    ${1:\$self-&gt;${2:field}(\$args{$2\});}$0
+    return \$self;
+}
+</string>
+	<key>name</key>
+	<string>New Constructor</string>
+	<key>scope</key>
+	<string>source.perl</string>
+	<key>tabTrigger</key>
+	<string>subnew</string>
+	<key>uuid</key>
+	<string>52C6CF5A-A13D-4535-B08F-5AD3C3F15677</string>
+</dict>
+</plist>

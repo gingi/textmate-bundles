@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>saveModifiedFiles</string>
+	<key>command</key>
+	<string>#!/usr/bin/perl -w
+
+use strict;
+
+$| = 1;
+
+our $CD = "$ENV{'TM_SUPPORT_PATH'}/bin/CocoaDialog.app/Contents/MacOS/CocoaDialog";
+
+my $command = $ENV{'TM_SHELL_RUN_COMMAND'};
+if (!defined $command) {
+	my ($button_rv);
+	my $rv = `"$CD" standard-inputbox --title "Run Shell Command" --no-newline \\
+    		--informative-text "Enter command to run"`;
+	($button_rv, $command) = split /\n/, $rv, 2;
+	if ($button_rv != 1) {
+		exit 0;
+	}
+}
+
+    print "&lt;h2&gt;Command Output&lt;/h2&gt;\n";
+    print "&lt;b&gt;Command:&lt;/b&gt; &lt;tt&gt;$command&lt;/tt&gt;&lt;br/&gt;\n";
+    print "&lt;b&gt;Output:&lt;/b&gt;\n";
+    print "&lt;pre&gt;\n";
+    print `$command`;
+    print "&lt;/pre&gt;\n";
+
+`/usr/local/bin/growlnotify -t "Command is done" -m "Command: $command"`
+</string>
+	<key>input</key>
+	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>^$</string>
+	<key>name</key>
+	<string>Run Shell Command</string>
+	<key>output</key>
+	<string>showAsHTML</string>
+	<key>uuid</key>
+	<string>57A23BBE-4B20-45F3-A7DC-427A62B0936A</string>
+</dict>
+</plist>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>my %${1:params} = ref \$_[0] eq 'HASH' ? %{ \$_[0] } : @_;</string>
+	<key>name</key>
+	<string>Flexible Input Hash Parameters</string>
+	<key>scope</key>
+	<string>source.perl</string>
+	<key>tabTrigger</key>
+	<string>params</string>
+	<key>uuid</key>
+	<string>62A4BFF8-0EE4-47EB-80A8-3B922ECF9773</string>
+</dict>
+</plist>

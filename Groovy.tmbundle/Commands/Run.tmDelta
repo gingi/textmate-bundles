@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>changed</key>
+	<dict>
+		<key>command</key>
+		<string>if [ -e "${TM_FILEPATH}" ]; then
+	echo "&lt;pre&gt;"
+    "$GROOVY_HOME/bin/groovy" "${TM_FILEPATH}"
+	echo "&lt;/pre&gt;"
+    exit_show_html
+else
+	puts "File not found or not saved. Please save first or try 'Run script' on a selection of text"
+fi
+</string>
+	</dict>
+	<key>deleted</key>
+	<array/>
+	<key>isDelta</key>
+	<true/>
+	<key>uuid</key>
+	<string>E9CD6C3E-DC99-4682-B98D-517D34C503A8</string>
+</dict>
+</plist>

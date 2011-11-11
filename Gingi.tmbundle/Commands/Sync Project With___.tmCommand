@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>saveModifiedFiles</string>
+	<key>command</key>
+	<string>. "$TM_SUPPORT_PATH/lib/webpreview.sh"
+html_header "Sync Project With..."
+
+require_cmd rsync
+
+if [ -z "$TM_RSYNC_TARGET" ]; then
+	res=$(
+		CocoaDialog inputbox \
+		--title "Remote Target" \
+		--informative-text "Target path to rsync this project with (e.g. scott@tiger:/usr/local/foo) or set TM_RSYNC_TARGET" \
+		--button1 "Okay" --button2 "Cancel")
+	[[ $(head -n1 &lt;&lt;&lt;"$res") == "2" ]] &amp;&amp; exit_discard
+	TM_RSYNC_TARGET=$(tail -n1 &lt;&lt;&lt;"$res")
+fi
+
+EXCLUDE=''
+if [ ! -z "$TM_RSYNC_EXCLUDE" ]; then
+	EXCLUDE=`echo $TM_RSYNC_EXCLUDE | perl -nle 'print join(" ", map { "--exclude $_" } split(/\:/, $_))'`
+fi
+
+error_log=/tmp/tm_rsync.$$.error_log
+command=$(echo rsync --exclude "*.tmproj" --exclude ".svn" $EXCLUDE -Cavuz $TM_PROJECT_DIRECTORY/ $TM_RSYNC_TARGET/)
+
+echo "COMMAND: $command" | pre
+output=$($command 2&gt; "$error_log")
+
+/usr/local/bin/growlnotify -t "Syncing complete"
+
+echo "&lt;b&gt;Synchronized $TM_RSYNC_TARGET&lt;/b&gt;";
+echo "$output" | pre
+
+if [ -s "$error_log" ]; then
+	echo "Command produced &lt;a href=\"txmt://open?url=file://$error_log\"&gt;some errors&lt;/a&gt;"
+else
+	echo "(No errors)"
+	rm "$error_log"
+fi
+
+html_footer</string>
+	<key>input</key>
+	<string>none</string>
+	<key>keyEquivalent</key>
+	<string>^$</string>
+	<key>name</key>
+	<string>Sync Project With...</string>
+	<key>output</key>
+	<string>showAsHTML</string>
+	<key>uuid</key>
+	<string>AC097FB7-7FC9-474A-A812-84D2EB1345D5</string>
+</dict>
+</plist>

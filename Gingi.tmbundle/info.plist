@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>Shiran Pasternak’s Bundle</string>
+	<key>ordering</key>
+	<array>
+		<string>2193025B-F41F-4448-88F5-438F478B5642</string>
+		<string>57A23BBE-4B20-45F3-A7DC-427A62B0936A</string>
+		<string>AC097FB7-7FC9-474A-A812-84D2EB1345D5</string>
+		<string>C1F9E465-95AA-43D0-8423-E1CD1CC2B935</string>
+		<string>A873AD76-4C01-4E48-A8D1-873BBA88B9E5</string>
+		<string>FB675F7C-82E7-4631-933D-F7867F59133C</string>
+		<string>E8DFEC4F-A3DD-4E53-B0E2-020EB93EE4F2</string>
+		<string>76CA8A3F-069D-4C29-B7A5-08E77A00232F</string>
+		<string>74ED0D3E-B3DB-4BD7-AF31-CE0315B92BB2</string>
+		<string>BD6D3816-CBB6-41E8-9778-D20714F44B52</string>
+		<string>7105F473-6E31-4D6B-BC22-339FEDAFDD29</string>
+	</array>
+	<key>uuid</key>
+	<string>D4C54385-A897-4925-97FE-882ECCC5F663</string>
+</dict>
+</plist>

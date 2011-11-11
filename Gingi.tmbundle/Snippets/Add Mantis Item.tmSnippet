@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>`open -g "http://warelab.org/bugs/bug_report_advanced_page.php?summary=$TM_SELECTED_TEXT"`[Mantis${1::${2:ID}}] $TM_SELECTED_TEXT$0</string>
+	<key>keyEquivalent</key>
+	<string>^M</string>
+	<key>name</key>
+	<string>Add Mantis Item</string>
+	<key>uuid</key>
+	<string>76CA8A3F-069D-4C29-B7A5-08E77A00232F</string>
+</dict>
+</plist>
