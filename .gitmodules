@@ -115,9 +115,6 @@
 [submodule "RegularExpressions.tmbundle"]
 	path = RegularExpressions.tmbundle
 	url = git://github.com/textmate/regularexpressions.tmbundle.git
-[submodule "Ruby Haml.tmbundle"]
-	path = Ruby Haml.tmbundle
-	url = git://github.com/textmate/ruby-haml.tmbundle.git
 [submodule "Ruby RSpec.tmbundle"]
 	path = Ruby RSpec.tmbundle
 	url = git://github.com/textmate/ruby-rspec.tmbundle.git
@@ -169,12 +166,6 @@
 [submodule "Asciidoc.tmbundle"]
 	path = Asciidoc.tmbundle
 	url = git://github.com/zuckschwerdt/asciidoc.tmbundle.git
-[submodule "Cucumber.tmbundle"]
-	path = Cucumber.tmbundle
-	url = git://github.com/bmabey/cucumber-tmbundle.git
-[submodule "Webrat.tmbundle"]
-	path = Webrat.tmbundle
-	url = git://github.com/bmabey/webrat-tmbundle.git
 [submodule "Mustache.tmbundle"]
 	path = Mustache.tmbundle
 	url = git://github.com/tekkub/Mustache.tmbundle.git
