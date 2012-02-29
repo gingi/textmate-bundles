@@ -1,0 +1,56 @@
+#!/usr/local/bin/perl
+
+use strict;
+use warnings;
+
+use Getopt::Long;
+use Pod::Usage;
+
+MAIN: {
+    my (%options);
+    GetOptions(\%options,
+        'help|h|?',
+        'man',
+    );
+    if ($options{help}) { pod2usage(-verbose => 1); }
+    if ($options{man})  { pod2usage(-verbose => 2); }
+
+    # TODO: Write actual code
+
+    exit 0;
+}
+
+=head1 NAME
+
+B<${TM_NEW_FILE_BASENAME}> - Description
+
+=head1 SYNOPSIS
+
+    perl ${TM_NEW_FILE_BASENAME} [options]
+
+    Options:
+        -h --help
+        -m --man
+
+=head1 OPTIONS
+
+B<-h --help>
+     Print a brief help message and exits.
+
+B<-m --man>
+     Print man page and exit
+
+=head1 DESCRIPTION
+
+B<This program>
+    [Description]
+
+=head1 AUTHOR
+
+    ${TM_FULLNAME} (${TM_EMAIL_ADDRESS})
+
+=head1 COPYRIGHT
+
+    Copyright (c) ${TM_YEAR} ${TM_ORGANIZATION_NAME}.
+
+=cut
