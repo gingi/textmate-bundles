@@ -178,3 +178,6 @@
 [submodule "Gists.tmbundle"]
 	path = Gists.tmbundle
 	url = git://github.com/ivanvc/gists-tmbundle.git
+[submodule "Save-On-Focus-Lost.tmbundle"]
+	path = Save-On-Focus-Lost.tmbundle
+	url = https://github.com/bomberstudios/Save-On-Focus-Lost.tmbundle.git
